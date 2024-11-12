@@ -1,0 +1,22 @@
+variables:
+   APP_NAME: 'profile-app'
+   DOCKER_HUB_USERNAME: 'w771' # Change to your Docker Hub username
+
+stages:
+   - build
+   - test
+
+build-and-publish:
+  image: docker:20.10.16
+  stage: build
+  script:
+     - echo "Build stage executed"
+     - docker --version
+
+base-test:
+  stage: test
+  image: docker:20.10.16
+  before_script:
+     - echo 'Execute before main script'
+  script: 
+     - echo "Reference a variable - ${APP_NAME} " 
